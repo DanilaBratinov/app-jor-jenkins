@@ -1,0 +1,41 @@
+<style>
+    html,body{margin: 0;padding: 0;}
+</style>
+<div class="map-wrapper">
+    <script src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=ru-RU"></script>
+    <div id="mapexMap" style="width:100%;height:100%;"></div>
+<script>
+ymaps.ready(function () {
+    var mapexMap = new ymaps.Map('mapexMap', {
+        center: [55.783816, 37.713152],
+        zoom: 17,
+        controls: ['zoomControl']
+    });
+
+    var myPlacemark = new ymaps.Placemark(
+        [55.783706, 37.713189],
+        {"iconContent": "/assets/template/images/close.png", "balloonContentBody": "г. Москва, Мажоров пер, д. 14, стр. 3", "balloonContentHeader": "ОКБ Прогресс"},
+        {
+            iconLayout: 'default#image',
+            iconImageHref: '/assets/template/images/close.png',
+            iconImageSize: [40, 52],
+            iconImageOffset: [-20, -52]
+        }
+    );
+
+    mapexMap.behaviors.disable('scrollZoom');
+    mapexMap.geoObjects.add(myPlacemark);
+    myPlacemark.balloon.open();
+    myPlacemark.events.fire('balloonopen');
+});
+
+// <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad7ab01c72e2f1813647bec12baae77e523b6e5c0112a790b1b6e3d5be2fe6eec&amp;width=100%25&amp;height=679&amp;lang=ru_RU&amp;scroll=true"></script>
+
+<!-- 
+// var point = new YMaps.GeoPoint(55.783816, 37.713152);
+
+// var placemark = new YMaps.Placemark(point);
+
+// map.addOverlay(placemark); -->
+</script>
+</div>
